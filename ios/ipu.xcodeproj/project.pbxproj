@@ -30,6 +30,7 @@
 		B58E0F662A4F1622007EC4C5 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B58E0F562A4F1622007EC4C5 /* EvilIcons.ttf */; };
 		B58E0F672A4F1622007EC4C5 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B58E0F572A4F1622007EC4C5 /* SimpleLineIcons.ttf */; };
 		B58E0F682A4F1622007EC4C5 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B58E0F582A4F1622007EC4C5 /* MaterialIcons.ttf */; };
+		B5F9A5D72A5E4E750073D892 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B5F9A5D62A5E4E750073D892 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,7 @@
 		B58E0F562A4F1622007EC4C5 /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
 		B58E0F572A4F1622007EC4C5 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		B58E0F582A4F1622007EC4C5 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
+		B5F9A5D62A5E4E750073D892 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -123,6 +125,7 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
+				B5F9A5D62A5E4E750073D892 /* GoogleService-Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
@@ -310,6 +313,7 @@
 				B58E0F652A4F1622007EC4C5 /* Zocial.ttf in Resources */,
 				B58E0F672A4F1622007EC4C5 /* SimpleLineIcons.ttf in Resources */,
 				B58E0F5B2A4F1622007EC4C5 /* Feather.ttf in Resources */,
+				B5F9A5D72A5E4E750073D892 /* GoogleService-Info.plist in Resources */,
 				B58E0F5A2A4F1622007EC4C5 /* Octicons.ttf in Resources */,
 				B58E0F5D2A4F1622007EC4C5 /* FontAwesome5_Brands.ttf in Resources */,
 				B58E0F5F2A4F1622007EC4C5 /* AntDesign.ttf in Resources */,

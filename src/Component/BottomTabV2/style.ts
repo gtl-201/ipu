@@ -18,7 +18,7 @@ const styleScaled = (Color: any) => {
       alignItems: 'center',
       alignSelf: 'flex-end',
       justifyContent: 'center',
-      marginTop: -70,
+      marginTop: 0,
       borderTopLeftRadius: 30,
       borderBottomLeftRadius: 30,
     },
@@ -51,6 +51,9 @@ const styleScaled = (Color: any) => {
       // borderWidth: 1,
       // borderColor: 'pink',
       borderRadius: 25,
+      height: 50,
+      flexDirection: 'row',
+
       // backgroundColor:'pink',
     },
     ButtonActive: {

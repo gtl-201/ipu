@@ -3,8 +3,9 @@ import { PanResponder, Text, TouchableOpacity, View } from 'react-native';
 import styleScaled from './style';
 import Icon from 'react-native-vector-icons/AntDesign';
 
-const Home: FC<any> = props => {
+const Home: FC<any> = (props) => {
   const styles = styleScaled(props.color);
+  const navigation = props.navigation;
 
   const panResponder = useRef(PanResponder.create({
     onStartShouldSetPanResponder: () => true,
@@ -18,7 +19,15 @@ const Home: FC<any> = props => {
   console.log('u la troi');
 
   return (
-    <View style={{ flex: 1, backgroundColor: 'red'}} {...panResponder.panHandlers} />
+    <View style={{ flex: 1, backgroundColor: 'red' }} {...panResponder.panHandlers}>
+      <TouchableOpacity
+        onPress={() => {
+          navigation.navigate('test')
+        }}
+        style={{ with: 200, height: 40, backgroundColor: 'blue' }} />
+
+
+    </View >
   );
 };
 

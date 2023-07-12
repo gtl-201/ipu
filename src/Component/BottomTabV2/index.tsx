@@ -5,20 +5,93 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import IconAnt from 'react-native-vector-icons/AntDesign';
 
 
-interface Props {
-  color: any,
-  allTab: any[],
-}
+// interface Props {
+//   color: any,
+//   allTab: any[],
+//   navigation: any,
+// }
 
-const BottomTabV2: FC<Props> = ({ color, allTab }) => {
-  console.log('allTab is', allTab);
-  console.log('color is', color);
+const EachButton = (props: any) => {
+  const { index, item, allTab, toggleBottomTab, press, color, tabAvtive, setTabAvtive } = props;
 
   const windowWidth = Dimensions.get('window').width * 0.95;
   const widthTab: number = (windowWidth / allTab.length) - (((allTab.length / 2) * 10) - 10);
   const widthTabActive: number = (windowWidth / allTab.length) + (((allTab.length / 2) * 10) + 10);
+  const styles = styleScaled(color);
 
-  const [tabAvtive, setTabAvtive] = useState(0);
+  const animatedValueText = useRef(
+    new Animated.Value(0)
+  ).current;
+
+
+  useEffect(() => {
+    if (tabAvtive === index) {
+      Animated.timing(animatedValueText, {
+        toValue: 1,
+        duration: 300,
+        useNativeDriver: false,
+      }).start();
+    } else {
+      Animated.timing(animatedValueText, {
+        toValue: 0,
+        duration: 300,
+        useNativeDriver: false,
+      }).start();
+    }
+  }, [tabAvtive]);
+
+  const textStyle = {
+    marginLeft: animatedValueText.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, 7],
+    }),
+    opacity: animatedValueText.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, 1],
+    }),
+    fontSize: animatedValueText.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, 15],
+    }),
+    width: animatedValueText.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, 44],
+    }),
+  }
+
+
+  return (
+    <View
+      key={index}
+    >
+      <TouchableOpacity
+        onPress={() => {
+          if (tabAvtive === index) {
+            toggleBottomTab();
+          } else {
+            setTabAvtive(index);
+            console.log('item: ', item);
+            press(item.name);
+            // navigation.navigate('test');
+            // press('test');
+          }
+        }}
+        style={[{ width: index === tabAvtive ? widthTabActive : widthTab }, styles.EachButton]}>
+        {/* animatedWidthValue */}
+        <Animated.View style={[index === tabAvtive ? styles.ActiveIcon: styles.EachButton]}>
+          <Icon name={index === tabAvtive ? item.icon.fill : item.icon.outline} size={30} color={index === tabAvtive ? '#343434' : '#979797'} />
+
+          <Animated.Text style={[{color: '#343434', fontWeight: 'bold', flexWrap: 'nowrap'}, textStyle]}>{item.name}</Animated.Text>
+
+        </Animated.View>
+      </TouchableOpacity>
+    </View>
+  );
+};
+
+const BottomTabV2: FC<any> = ({ color, allTab, press }) => {
+
+  const windowWidth = Dimensions.get('window').width * 0.95;
 
   const styles = styleScaled(color);
 
@@ -72,10 +145,10 @@ const BottomTabV2: FC<Props> = ({ color, allTab }) => {
     }
   };
 
+  const [tabAvtive, setTabAvtive] = useState(0);
   // Animation BottomTab End
-
   return (
-    <View>
+    <View style={{ marginTop: -100 }}>
       <Animated.View style={[styles.BurgerContainer, { marginRight: animationBurgerValue }]}>
         <TouchableOpacity
           style={{ width: 60, height: 60, justifyContent: 'center', alignItems: 'center' }}
@@ -87,27 +160,8 @@ const BottomTabV2: FC<Props> = ({ color, allTab }) => {
         </TouchableOpacity>
       </Animated.View>
       <Animated.View style={[styles.FlexHorizon, styles.BottomTabContainer, { width: animatedWidthValue, marginLeft: animatedPositionValue }]}>
-        {allTab.map((item, index) => (
-          <View
-            key={index}
-          >
-            <TouchableOpacity
-              onPress={() => {
-                if (tabAvtive === index) {
-                  toggleBottomTab();
-                } else {
-                  setTabAvtive(index);
-                }
-              }}
-              style={[{ width: index === tabAvtive ? widthTabActive : widthTab }, styles.EachButton]}>
-              <Animated.View style={[index === tabAvtive && styles.ActiveIcon]}>
-                <Icon name={index === tabAvtive ? item.icon.fill : item.icon.outline} size={30} color={index === tabAvtive ? '#343434' : '#979797'} />
-
-                {index === tabAvtive && <Text style={{ color: '#343434', marginLeft: 7, fontWeight: 'bold' }}>{item.name}</Text>}
-
-              </Animated.View>
-            </TouchableOpacity>
-          </View>
+        {allTab.map((item: any, index: any) => (
+          <EachButton key={index} index={index} item={item} allTab={allTab} toggleBottomTab={() => toggleBottomTab()} press={press} color={color} tabAvtive={tabAvtive} setTabAvtive={setTabAvtive} />
         )
         )}
       </Animated.View>
