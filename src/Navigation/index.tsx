@@ -9,6 +9,7 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import BottomTabV2 from '../Component/BottomTabV2';
 import { useState } from 'react';
+import LoginScreen from '../Component/Login';
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,8 @@ function NavigateScreen() {
                 <Stack.Screen name="home" component={Home} options={{headerShown: false}}/>
                 <Stack.Screen name="test" component={Test} options={{headerShown: false}}/>
                 {/* <Stack.Screen name="bottomTabNavigation" component={BottomTabNavigation} /> */}
+                <Stack.Screen name="Login" component={LoginScreen} />
+            
             </Stack.Navigator>
         </NavigationContainer>
     );

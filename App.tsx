@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   SafeAreaView,
   StatusBar,
@@ -12,7 +12,13 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 import NavigateScreen from './src/Navigation';
 import NavigateScreenTest from './src/Navigation/index-test';
+import NavigateScreenAuth from './src/Navigation/authentic';
+import auth from '@react-native-firebase/auth';
 
+// import firebase from '@react-native-firebase/app';
+
+
+// firebase.initializeApp(firebaseConfig);
 function App(): JSX.Element {
   const isDarkMode = useColorScheme() === 'dark';
 
@@ -25,39 +31,57 @@ function App(): JSX.Element {
     console.log(item);
 
   };
+  console.log(auth().currentUser);
+  const [signIn, setSignIn] = useState(false);
 
-  return (
-    <SafeAreaView style={styles.container}>
-    {/* <View style={{ flex: 1 }}> */}
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      {/* <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={[backgroundStyle, { minHeight: '100%' }]}
-      >
-        <NavigateScreen />
-      </ScrollView> */}
-      {choose === 'home' && <NavigateScreen />}
-      {choose === 'test' && <NavigateScreenTest />}
+  useEffect(() => {
+    auth().onAuthStateChanged(user => {
+      user ? setSignIn(true) : setSignIn(false);
+    });
+  });
+  if (signIn === false) {
+    return (
+      <NavigateScreenAuth />
+    );
+  } else {
+    return (
 
-      {/* <View style={{backgroundColor: 'pink', width: '100%', height: 20}}></View> */}
+      <SafeAreaView style={styles.container}>
+        {/* <View style={{ flex: 1 }}> */}
+        <StatusBar
+          barStyle={isDarkMode ? 'light-content' : 'dark-content'}
+          backgroundColor={backgroundStyle.backgroundColor}
+        />
+        {/* <ScrollView
+          contentInsetAdjustmentBehavior="automatic"
+          style={[backgroundStyle, { minHeight: '100%' }]}
+        >
+          <NavigateScreen />
+        </ScrollView> */}
+        {choose === 'home' && <NavigateScreen />}
+        {choose === 'test' && <NavigateScreenTest />}
 
-      <BottomTabV2 allTab={
-        [
-          { name: 'home', icon: { outline: 'home-outline', fill: 'home' }, component: 1 },
-          { name: 'test', icon: { outline: 'car-sport-outline', fill: 'car-sport-sharp' }, component: 2 },
-          { name: 'test', icon: { outline: 'car-sport-outline', fill: 'car-sport-sharp' }, component: 3 },
-          { name: 'test', icon: { outline: 'car-sport-outline', fill: 'car-sport-sharp' }, component: 4 },
-          // { name: 'test', icon: { outline: 'car-sport-outline', fill: 'car-sport-sharp' }, component: 5 },
-        ]
-      } color={Colors}
-        press={(item: string) => changeTab(item)}
-      />
+        {/* <View style={{backgroundColor: 'pink', width: '100%', height: 20}}></View> */}
+
+        <BottomTabV2 allTab={
+          [
+            { name: 'home', icon: { outline: 'home-outline', fill: 'home' }, component: 1 },
+            { name: 'test', icon: { outline: 'car-sport-outline', fill: 'car-sport-sharp' }, component: 2 },
+            { name: 'test', icon: { outline: 'car-sport-outline', fill: 'car-sport-sharp' }, component: 3 },
+            { name: 'test', icon: { outline: 'car-sport-outline', fill: 'car-sport-sharp' }, component: 4 },
+            // { name: 'test', icon: { outline: 'car-sport-outline', fill: 'car-sport-sharp' }, component: 5 },
+          ]
+        }
+          color={Colors}
+          press={(item: string) => changeTab(item)}
+        />
+
       </SafeAreaView>
-    // </View>
-  );
+      // </View>
+    );
+  }
+
+
 }
 
 const styles = StyleSheet.create({
