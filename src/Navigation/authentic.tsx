@@ -13,7 +13,7 @@ function NavigateScreen() {
         <NavigationContainer>
             <Stack.Navigator initialRouteName={'test'}>
             <Stack.Screen name="login" component={Login} options={{headerShown: false}}/>
-            <Stack.Screen name="register" component={RegisterScreen} options={{headerShown: true}}/>
+            <Stack.Screen name="register" component={RegisterScreen} options={{headerShown: false}}/>
             </Stack.Navigator>
         </NavigationContainer>
     );

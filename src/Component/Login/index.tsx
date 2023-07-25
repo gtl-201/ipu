@@ -1,14 +1,16 @@
 import React, { useRef, useState } from 'react';
-import { View, TextInput, Button, StyleSheet, Text, ImageBackground, TouchableOpacity, Image } from 'react-native';
+import { View, TextInput, Button, StyleSheet, Text, ImageBackground, TouchableOpacity, Image, Alert, ActivityIndicator } from 'react-native';
 import auth from '@react-native-firebase/auth';
 import Icon from 'react-native-vector-icons/FontAwesome5';
-import { SHADOW_1, SHADOW_3, SHADOW_5 } from './../../Utils/Values/shadows';
+import { SHADOW_1, SHADOW_2, SHADOW_3, SHADOW_5 } from './../../Utils/Values/shadows';
 import { moderateScale } from 'react-native-size-matters';
 
 const LoginScreen = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+
   const navigation = props.navigation;
 
 
@@ -22,31 +24,29 @@ const LoginScreen = (props) => {
   // };
 
   const handleSignIn = () => {
+
     auth()
       .signInWithEmailAndPassword(email, password)
       .then((user) => {
         console.log('User account sign in', user);
+        setLoading(false);
       })
       .catch(error => {
-        if (error.code === 'auth/email-already-in-use') {
-          console.log('That email address is already in use!');
-        }
-
-        if (error.code === 'auth/invalid-email') {
-          console.log('That email address is invalid!');
-        }
-
-        console.error(error);
+        Alert.alert('Login Failed', error.code);
+        setLoading(false);
       });
   };
 
   return (
     <ImageBackground
-      source={require('../../Asset/Picture/blueSky.jpg')}
+      source={require('../../Asset/Picture/5.jpg')}
       style={styles.container}
       imageStyle={styles.backgroundImage}
-      blurRadius={10}
+      blurRadius={50}
     >
+      <View style={{height: 40}}>
+      {loading && <ActivityIndicator size="large" color="#007bff" />}
+      </View>
       <Text style={styles.title}>Hello Again!</Text>
       <Text style={styles.subTitle}>Welcome back you've</Text>
       <Text style={[styles.subTitle, { marginBottom: 22 }]}>been missed!</Text>
@@ -74,16 +74,20 @@ const LoginScreen = (props) => {
             color={'grey'} />
         </TouchableOpacity>
       </View>
+
       <TouchableOpacity style={styles.forgetPass} onPress={() => { }}>
-        <Text style={{ color: 'gray' }}>Quên mật khẩu</Text>
+        <Text style={{ color: 'black', fontSize: 15, fontWeight: '500' }}>Quên mật khẩu</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity style={[styles.signIn, styles.shadow5]} onPress={handleSignIn}>
+      <TouchableOpacity style={[styles.signIn, styles.shadow5]} onPress={() => {
+        setLoading(true);
+        handleSignIn();
+      }}>
         <Text style={{ color: 'white', fontSize: 20, fontWeight: '600', textTransform: 'capitalize' }}>Đăng nhập</Text>
       </TouchableOpacity>
 
+      {/*Start Social Connect Account */}
       <Text style={styles.continue}>or continues with</Text>
-
       <View style={styles.flexRow}>
         <TouchableOpacity style={styles.borderIc}>
           <Image
@@ -106,19 +110,22 @@ const LoginScreen = (props) => {
           />
         </TouchableOpacity>
       </View>
+      {/*End Social Connect Account */}
+
       {/*
       <Text style={styles.text}>Bạn chưa có tài khoản?</Text>
       <Button title='Đăng ký' onPress={() => navigation.navigate('signUp')} />
       <Button title="check user" onPress={() => console.log('currentUser:', auth().currentUser)} />
       <Button title="sign out" onPress={handleSignout} /> */}
 
-      {/* </BlurView> */}
+      {/* Start Register   */}
       <View style={styles.flexRow}>
         <Text style={styles.continue}>not a menber?</Text>
         <TouchableOpacity onPress={() => navigation.navigate('register')}>
           <Text style={{ color: 'blue', marginLeft: 5, letterSpacing: 1 }}>Register Now</Text>
         </TouchableOpacity>
       </View>
+      {/* End Register */}
     </ImageBackground>
   );
 };
@@ -131,18 +138,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     paddingHorizontal: 20,
-    opacity: 0.7,
+    opacity: 0.9,
   },
-  absoluteBlur: {
-    ...StyleSheet.absoluteFillObject,
-    backgroundColor: 'rgba(255, 255, 255, 0.7)', // Điều này sẽ tạo hiệu ứng mờ giống kính
-    justifyContent: 'center',
-    alignItems: 'center',
-    zIndex: 100,
-  },
+  // absoluteBlur: {
+  //   ...StyleSheet.absoluteFillObject,
+  //   backgroundColor: 'rgba(255, 255, 255, 0.7)', // Điều này sẽ tạo hiệu ứng mờ giống kính
+  //   justifyContent: 'center',
+  //   alignItems: 'center',
+  //   zIndex: 100,
+  // },
   backgroundImage: {
     flex: 1,
     resizeMode: 'cover',
+    // left: -200,
+    // transform: [{ rotate: '180deg' }],
   },
   input: {
     height: 45,
@@ -160,7 +169,7 @@ const styles = StyleSheet.create({
     borderEndWidth: 0,
     borderLeftWidth: 0,
     borderBottomWidth: 0,
-    ...SHADOW_1,
+    ...SHADOW_3,
   },
   passwordContainer: {
     flexDirection: 'row',
@@ -178,14 +187,20 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 30,
     fontWeight: 'bold',
-    marginVertical: 10,
+    marginBottom: 10,
     letterSpacing: 1.2,
+    // color: '#171717',
+    opacity: 0.7,
+
   },
   subTitle: {
     fontSize: 20,
     fontWeight: '500',
     textAlign: 'center',
     letterSpacing: 2,
+    // color: '#171717',
+    opacity: 0.7,
+
   },
   continue: {
     fontSize: 15,
@@ -198,6 +213,7 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'flex-end',
     marginVertical: 5,
+    opacity: 0.7,
   },
   signIn: {
     backgroundColor: '#ED2939',

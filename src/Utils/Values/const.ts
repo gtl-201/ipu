@@ -3,29 +3,29 @@ import { DARK, LIGHT } from "../Themes";
 import { EN, VI } from "../Languages";
 
 export const STRING={
-  EMAIL:'Tranbaphuc1999@gmail.com',
-  MAIL_TO:"mailto:tranbaphuc1999@gmail.com",
-  NAME:"ZipEnter",
-  GITHUB_LINK:"https://github.com/phuctranba/tijam"
+  EMAIL:'Longkzt1212001@gmail.com',
+  MAIL_TO:"mailto: Longkzt1212001@gmail.com",
+  NAME:"Long",
+  GITHUB_LINK:""
 }
 
 export const IMAGE={
-  LOGO:require("../../Assets/Images/tijam-logo.png"),
-  US_FLAG:require("../../Assets/Images/united-states-flag.png"),
-  VI_FLAG:require("../../Assets/Images/vietnam-flag.png"),
-  EMPTY_AVATAR:require("../../Assets/Images/avatar-register.png"),
-  PLACEHOLDER:require("../../Assets/Images/image-placeholder.png"),
-  WORLD_MAP:require("../../Assets/Images/world-map.png")
+  // LOGO:require("../../Assets/Images/tijam-logo.png"),
+  // US_FLAG:require("../../Assets/Images/united-states-flag.png"),
+  // VI_FLAG:require("../../Assets/Images/vietnam-flag.png"),
+  // EMPTY_AVATAR:require("../../Assets/Images/avatar-register.png"),
+  // PLACEHOLDER:require("../../Assets/Images/image-placeholder.png"),
+  // WORLD_MAP:require("../../Assets/Images/world-map.png")
 }
 
 export const LOTTIE={
-  INTRO_1:require("../../Assets/Loties/intro-1.json"),
-  INTRO_2:require("../../Assets/Loties/intro-2.json"),
-  INTRO_3:require("../../Assets/Loties/intro-3.json"),
-  LOADING:require("../../Assets/Loties/loading.json"),
-  LOADING_2:require("../../Assets/Loties/loading2.json"),
-  STAR:require("../../Assets/Loties/star.json"),
-  CREATE_POST:require("../../Assets/Loties/create-post.json")
+  // INTRO_1:require("../../Assets/Loties/intro-1.json"),
+  // INTRO_2:require("../../Assets/Loties/intro-2.json"),
+  // INTRO_3:require("../../Assets/Loties/intro-3.json"),
+  // LOADING:require("../../Assets/Loties/loading.json"),
+  // LOADING_2:require("../../Assets/Loties/loading2.json"),
+  // STAR:require("../../Assets/Loties/star.json"),
+  // CREATE_POST:require("../../Assets/Loties/create-post.json")
 }
 
 export const SETTING_OPTIONS = {
