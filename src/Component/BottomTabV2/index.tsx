@@ -25,19 +25,11 @@ const EachButton = (props: any) => {
 
 
   useEffect(() => {
-    if (tabAvtive === index) {
       Animated.timing(animatedValueText, {
-        toValue: 1,
+        toValue: tabAvtive === index ? 1 : 0,
         duration: 300,
         useNativeDriver: false,
       }).start();
-    } else {
-      Animated.timing(animatedValueText, {
-        toValue: 0,
-        duration: 300,
-        useNativeDriver: false,
-      }).start();
-    }
   }, [tabAvtive]);
 
   const textStyle = {
@@ -57,7 +49,7 @@ const EachButton = (props: any) => {
       inputRange: [0, 1],
       outputRange: [0, 44],
     }),
-  }
+  };
 
 
   return (
@@ -78,7 +70,7 @@ const EachButton = (props: any) => {
         }}
         style={[{ width: index === tabAvtive ? widthTabActive : widthTab }, styles.EachButton]}>
         {/* animatedWidthValue */}
-        <Animated.View style={[index === tabAvtive ? styles.ActiveIcon: styles.EachButton]}>
+        <Animated.View style={[index === tabAvtive ? styles.ActiveIcon : styles.EachButton]}>
           <Icon name={index === tabAvtive ? item.icon.fill : item.icon.outline} size={30} color={index === tabAvtive ? '#343434' : '#979797'} />
 
           <Animated.Text style={[{color: '#343434', fontWeight: 'bold', flexWrap: 'nowrap'}, textStyle]}>{item.name}</Animated.Text>
