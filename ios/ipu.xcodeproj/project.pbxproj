@@ -14,7 +14,6 @@
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		8B846A1AB519B6F12DBC824E /* Pods_ipu_ipuTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A22884FAA26C0E10E12D6CD2 /* Pods_ipu_ipuTests.framework */; };
 		A611B810476EF08F729B37C7 /* Pods_ipu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 270B07C714C48469085B020C /* Pods_ipu.framework */; };
-		B53405DF2A5E75E500866C33 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B53405DE2A5E75E400866C33 /* GoogleService-Info.plist */; };
 		B58E0F592A4F1622007EC4C5 /* Fontisto.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B58E0F492A4F1622007EC4C5 /* Fontisto.ttf */; };
 		B58E0F5A2A4F1622007EC4C5 /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B58E0F4A2A4F1622007EC4C5 /* Octicons.ttf */; };
 		B58E0F5B2A4F1622007EC4C5 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B58E0F4B2A4F1622007EC4C5 /* Feather.ttf */; };
@@ -31,6 +30,7 @@
 		B58E0F662A4F1622007EC4C5 /* EvilIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B58E0F562A4F1622007EC4C5 /* EvilIcons.ttf */; };
 		B58E0F672A4F1622007EC4C5 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B58E0F572A4F1622007EC4C5 /* SimpleLineIcons.ttf */; };
 		B58E0F682A4F1622007EC4C5 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B58E0F582A4F1622007EC4C5 /* MaterialIcons.ttf */; };
+		B59872922A7FE61E00ECD6D3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B59872912A7FE61E00ECD6D3 /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,7 +60,6 @@
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ipu/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-ipu-ipuTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ipu-ipuTests.release.xcconfig"; path = "Target Support Files/Pods-ipu-ipuTests/Pods-ipu-ipuTests.release.xcconfig"; sourceTree = "<group>"; };
 		A22884FAA26C0E10E12D6CD2 /* Pods_ipu_ipuTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ipu_ipuTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B53405DE2A5E75E400866C33 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B58E0F492A4F1622007EC4C5 /* Fontisto.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Fontisto.ttf; sourceTree = "<group>"; };
 		B58E0F4A2A4F1622007EC4C5 /* Octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Octicons.ttf; sourceTree = "<group>"; };
 		B58E0F4B2A4F1622007EC4C5 /* Feather.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Feather.ttf; sourceTree = "<group>"; };
@@ -77,6 +76,7 @@
 		B58E0F562A4F1622007EC4C5 /* EvilIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = EvilIcons.ttf; sourceTree = "<group>"; };
 		B58E0F572A4F1622007EC4C5 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		B58E0F582A4F1622007EC4C5 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
+		B59872912A7FE61E00ECD6D3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -124,7 +124,7 @@
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
-				B53405DE2A5E75E400866C33 /* GoogleService-Info.plist */,
+				B59872912A7FE61E00ECD6D3 /* GoogleService-Info.plist */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
@@ -314,7 +314,7 @@
 				B58E0F652A4F1622007EC4C5 /* Zocial.ttf in Resources */,
 				B58E0F672A4F1622007EC4C5 /* SimpleLineIcons.ttf in Resources */,
 				B58E0F5B2A4F1622007EC4C5 /* Feather.ttf in Resources */,
-				B53405DF2A5E75E500866C33 /* GoogleService-Info.plist in Resources */,
+				B59872922A7FE61E00ECD6D3 /* GoogleService-Info.plist in Resources */,
 				B58E0F5A2A4F1622007EC4C5 /* Octicons.ttf in Resources */,
 				B58E0F5D2A4F1622007EC4C5 /* FontAwesome5_Brands.ttf in Resources */,
 				B58E0F5F2A4F1622007EC4C5 /* AntDesign.ttf in Resources */,
