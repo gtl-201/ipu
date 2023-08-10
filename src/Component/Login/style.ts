@@ -65,6 +65,7 @@ const styleScaled = (Color: any) => {
       letterSpacing: 1.2,
       // color: '#171717',
       opacity: 0.7,
+      textTransform: 'capitalize',
     },
     subTitle: {
       fontSize: 20,
@@ -73,6 +74,8 @@ const styleScaled = (Color: any) => {
       letterSpacing: 2,
       // color: '#171717',
       opacity: 0.7,
+      textTransform: 'capitalize',
+
     },
     continue: {
       fontSize: 15,

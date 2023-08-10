@@ -3,6 +3,7 @@ import { View, TextInput, Button, StyleSheet, Text, ImageBackground, TouchableOp
 import auth from '@react-native-firebase/auth';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import styleScaled from './style';
+import { useTranslation } from 'react-i18next';
 // import { connect } from 'react-redux';
 
 
@@ -39,7 +40,7 @@ const LoginScreen = (props) => {
         setLoading(false);
       });
   };
-
+  const { t } = useTranslation();
   return (
     <ImageBackground
       source={require('../../Asset/Picture/5.jpg')}
@@ -50,20 +51,20 @@ const LoginScreen = (props) => {
       <View style={{ height: 40 }}>
         {loading && <ActivityIndicator size="large" color="#007bff" />}
       </View>
-      <Text style={styles.title}>Hello Again!</Text>
-      <Text style={styles.subTitle}>Welcome back you've</Text>
-      <Text style={[styles.subTitle, { marginBottom: 22 }]}>been missed!</Text>
+      <Text style={styles.title}>{t('welcome again!')}</Text>
+      <Text style={styles.subTitle}>{t("welcome back you've")}</Text>
+      <Text style={[styles.subTitle, { marginBottom: 22 }]}>{t('been missed!')}</Text>
 
       <TextInput
         style={styles.input}
-        placeholder="Email"
+        placeholder= {t('email')}
         value={email}
         onChangeText={setEmail}
       />
       <View style={styles.passwordContainer}>
         <TextInput
           style={styles.input}
-          placeholder="Password"
+          placeholder={t('password')}
           secureTextEntry={!showPassword}
           value={password}
           onChangeText={setPassword}
@@ -79,18 +80,18 @@ const LoginScreen = (props) => {
       </View>
 
       <TouchableOpacity style={styles.forgetPass} onPress={() => { }}>
-        <Text style={{ color: 'black', fontSize: 15, fontWeight: '500' }}>Quên mật khẩu</Text>
+        <Text style={{ color: 'black', fontSize: 15, fontWeight: '500' }}>{t('forget password')}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={[styles.signIn, styles.shadow5]} onPress={() => {
         setLoading(true);
         handleSignIn();
       }}>
-        <Text style={{ color: 'white', fontSize: 20, fontWeight: '600', textTransform: 'capitalize' }}>Đăng nhập</Text>
+        <Text style={{ color: 'white', fontSize: 20, fontWeight: '600', textTransform: 'capitalize' }}>{t('sign in')}</Text>
       </TouchableOpacity>
 
       {/*Start Social Connect Account */}
-      <Text style={styles.continue}>or continues with</Text>
+      <Text style={styles.continue}>{t('or continues with')}</Text>
       <View style={styles.flexRow}>
         <TouchableOpacity style={styles.borderIc}>
           <Image
@@ -123,9 +124,9 @@ const LoginScreen = (props) => {
 
       {/* Start Register   */}
       <View style={styles.flexRow}>
-        <Text style={styles.continue}>not a menber?</Text>
+        <Text style={styles.continue}>{t('not a menber?')}</Text>
         <TouchableOpacity onPress={() => navigation.navigate('register')}>
-          <Text style={{ color: 'blue', marginLeft: 5, letterSpacing: 1 }}>Register Now</Text>
+          <Text style={{ color: 'blue', marginLeft: 5, letterSpacing: 1 }}>{t('register Now')}</Text>
         </TouchableOpacity>
       </View>
       {/* End Register */}

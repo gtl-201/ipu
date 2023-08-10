@@ -3,6 +3,7 @@ import { View, Text, TextInput, Button, StyleSheet, ImageBackground, TouchableOp
 import auth from '@react-native-firebase/auth';
 import { SHADOW_1, SHADOW_3 } from '../../Utils/Values';
 import Icon from 'react-native-vector-icons/FontAwesome5';
+import { useTranslation } from 'react-i18next';
 
 const RegisterScreen = (props: any) => {
   const navigation = props.navigation;
@@ -43,6 +44,8 @@ const RegisterScreen = (props: any) => {
 
   };
 
+  const { t } = useTranslation();
+
   return (
     <ImageBackground
       source={require('../../Asset/Picture/5.jpg')}
@@ -51,14 +54,14 @@ const RegisterScreen = (props: any) => {
       blurRadius={50}
     >
 
-      <View style={{height: 40}}>
-      {loading && <ActivityIndicator size="large" color="#007bff" />}
+      <View style={{ height: 40 }}>
+        {loading && <ActivityIndicator size="large" color="#007bff" />}
       </View>
 
       <Text style={styles.title}>
-        Welcome to
+        {t('welcome to')}
         <Text style={[styles.title, { color: '#ED2939' }]}>Ipu</Text>
-        App
+        {t('app')}
       </Text>
       {/* <Text style={styles.subTitle}>Welcome back you've</Text> */}
       {/* <Text style={[styles.subTitle, { marginBottom: 22 }]}>been missed!</Text> */}
@@ -66,14 +69,14 @@ const RegisterScreen = (props: any) => {
 
       <TextInput
         style={styles.input}
-        placeholder="Email"
+        placeholder={t("email")}
         value={email}
         onChangeText={setEmail}
       />
       <View style={styles.passwordContainer}>
         <TextInput
           style={styles.input}
-          placeholder="Password"
+          placeholder={t("password")}
           secureTextEntry={!showPassword}
           value={password}
           onChangeText={setPassword}
@@ -91,7 +94,7 @@ const RegisterScreen = (props: any) => {
       <View style={styles.passwordContainer}>
         <TextInput
           style={styles.input}
-          placeholder="Confirm Password"
+          placeholder={t("confirm password")}
           secureTextEntry={!showConfirmPassword}
           value={confirmPassword}
           onChangeText={setConfirmPassword}
@@ -109,14 +112,14 @@ const RegisterScreen = (props: any) => {
       <TouchableOpacity style={[styles.signUp, styles.shadow5]} onPress={() => {
         setLoading(true);
         handleRegister();
-        }}>
-        <Text style={{ color: 'white', fontSize: 20, fontWeight: '600', textTransform: 'capitalize' }}>Đăng ký</Text>
+      }}>
+        <Text style={{ color: 'white', fontSize: 20, fontWeight: '600', textTransform: 'capitalize' }}>{t('sign up')}</Text>
       </TouchableOpacity>
       {/* <Button title="Đăng ký" onPress={handleRegister} /> */}
       <View style={styles.flexRow}>
-        <Text style={styles.continue}>You already have an Account?</Text>
+        <Text style={styles.continue}>{t('You already have an Account?')}</Text>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={{ color: 'blue', marginLeft: 5, letterSpacing: 1 }}>Login Now</Text>
+          <Text style={{ color: 'blue', marginLeft: 5, letterSpacing: 1 }}>{t('Login Now')}</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>

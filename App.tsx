@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import {
+  Button,
   SafeAreaView,
   StatusBar,
   StyleSheet,
+  Text,
   View,
   useColorScheme,
 } from 'react-native';
@@ -15,7 +17,24 @@ import NavigateScreenTest from './src/Navigation/index-test';
 import NavigateScreenAuth from './src/Navigation/authentic';
 import auth from '@react-native-firebase/auth';
 
+import en from './src/Utils/Languages/en';
+import vi from './src/Utils/Languages/vi';
+
+import i18next from 'i18next';
+import { initReactI18next } from 'react-i18next';
 // import firebase from '@react-native-firebase/app';
+
+i18next.use(initReactI18next).init({
+  resources: {
+    en: { translation: en },
+    vi: { translation: vi },
+  },
+  lng: 'en', // Ngôn ngữ mặc định
+  fallbackLng: 'en', // Ngôn ngữ fallback nếu không tìm thấy dịch cho ngôn ngữ hiện tại
+  interpolation: {
+    escapeValue: false, // không thoát các ký tự đặc biệt trong chuỗi dịch
+  },
+});
 
 
 // firebase.initializeApp(firebaseConfig);
@@ -39,6 +58,15 @@ function App(): JSX.Element {
       user ? setSignIn(true) : setSignIn(false);
     });
   });
+
+  const [currentLanguage, setCurrentLanguage] = useState('en');
+
+  const changeLanguage = (language: string) => {
+    setCurrentLanguage(language);
+    i18next.changeLanguage(language);
+  };
+
+
   if (signIn === false) {
     return (
       <NavigateScreenAuth />
@@ -58,6 +86,9 @@ function App(): JSX.Element {
         >
           <NavigateScreen />
         </ScrollView> */}
+        <Button title="English" onPress={() => changeLanguage('en')} />
+        <Button title="Tiếng Việt" onPress={() => changeLanguage('vi')} />
+        
         {choose === 'home' && <NavigateScreen />}
         {choose === 'test' && <NavigateScreenTest />}
 

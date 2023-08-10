@@ -5,6 +5,7 @@ import styleScaled from './style';
 import Icon from 'react-native-vector-icons/AntDesign';
 import IconIon from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { useTranslation } from 'react-i18next';
 
 const OnBoard = (props: any) => {
   const styles = styleScaled(props.color);
@@ -89,8 +90,8 @@ const OnBoard = (props: any) => {
       <View style={styles.containerItem}>
         {itemUse.urlLinked && itemUse.urlLinked !== '' && <Image source={itemUse.urlLinked} style={styles.image} />}
         <View style={{ flex: 0.3, alignItems: 'center', justifyContent: 'center' }}>
-          {itemUse.title && itemUse.title !== '' && <Text style={styles.title}>{itemUse.title}</Text>}
-          {itemUse.subTitle && itemUse.subTitle !== '' && <Text style={styles.subTitle}>{itemUse.subTitle}</Text>}
+          {itemUse.title && itemUse.title !== '' && <Text style={styles.title}>{t(itemUse.title)}</Text>}
+          {itemUse.subTitle && itemUse.subTitle !== '' && <Text style={styles.subTitle}>{t(itemUse.subTitle)}</Text>}
         </View>
       </View>);
   };
@@ -169,6 +170,9 @@ const OnBoard = (props: any) => {
     }),
   };
 
+
+  const { t } = useTranslation();
+
   return (
     <SafeAreaView style={{ display: 'flex', flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <View style={{ flex: 1, width: '100%' }}>
@@ -176,7 +180,7 @@ const OnBoard = (props: any) => {
           currentIndex < data.length - 1 && */}
         <Animated.View style={[styles.skip,SkipStyle]}>
           <TouchableOpacity onPress={() => skip()} style={{flexDirection: 'row', width: 80}}>
-            <Text style={{ fontSize: 16, fontWeight: '600', letterSpacing: 0.6 }}>Skip</Text>
+            <Text style={{ fontSize: 16, fontWeight: '600', letterSpacing: 0.6 }}>{t('Skip')}</Text>
             <IconIon name={'play-skip-forward-sharp'} size={22} color={'black'} />
           </TouchableOpacity>
         </Animated.View>
@@ -209,7 +213,7 @@ const OnBoard = (props: any) => {
           <TouchableOpacity activeOpacity={0.8} onPress={() => goToNextItem()} >
             <Animated.View style={[styles.circleBtn, continueBtnStyle]}>
               <Animated.View style={TextStyle}>
-                <Text style={[styles.textWhite, { width: 80 }]}>Continues</Text>
+                <Text style={[styles.textWhite, { width: 80 }]}>{t('Continues')}</Text>
               </Animated.View>
               <Icon name={'right'} size={30} color={'white'} />
             </Animated.View>

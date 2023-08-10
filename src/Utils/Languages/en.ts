@@ -1,4 +1,5 @@
 export default {
+  hello: "hello",
   //Type
   I_NEED: "I need",
   CONFIDING: "Confiding",

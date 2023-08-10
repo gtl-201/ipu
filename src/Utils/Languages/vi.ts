@@ -1,4 +1,5 @@
 export default {
+  hello: 'xin chào',
   //Thể loại
   I_NEED: "Tôi cần",
   CONFIDING: "Tâm sự",
