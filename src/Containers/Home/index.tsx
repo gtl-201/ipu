@@ -3,10 +3,13 @@ import { Button, PanResponder, Text, TouchableOpacity, View } from 'react-native
 import styleScaled from './style';
 import auth from '@react-native-firebase/auth';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from '../../Utils/Themes/index';
+import ThemeSwitchScreen from '../../Component/ChangeTheme/changeTheme';
 
 
 const Home: FC<any> = (props) => {
-  const styles = styleScaled(props.color);
+  const { theme } = useTheme();
+  const styles = styleScaled(theme);
   const navigation = props.navigation;
 
   const panResponder = useRef(PanResponder.create({
@@ -35,13 +38,18 @@ const Home: FC<any> = (props) => {
             });
           // console.log('Tên của Firebase:', firebase.app());
         }}
-        style={{ with: 200, height: 40, backgroundColor: 'blue' }} />
+        style={styles.button}>
+          <Text>Sign out</Text>
+          </TouchableOpacity>
+
       <Button title="Verify Email" onPress={() => auth().currentUser?.sendEmailVerification()
         .then((data) => console.log(data))
         .catch((err: any) => console.log(err))} />
       <Text>{t('hello')} {auth().currentUser?.displayName}</Text>
 
       <Button title="check user" onPress={() => console.log('currentUser:', auth().currentUser)} />
+
+      <ThemeSwitchScreen />
     </View >
   );
 };
