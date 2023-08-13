@@ -32,11 +32,11 @@ const styleScaled = (Color: any) => {
       fontSize: 16,
       marginVertical: 10,
       width: '100%',
-      borderColor: 'gray',
-      backgroundColor: 'white',
+      borderColor: Color.primaryText2,
+      backgroundColor: Color.onBackground,
       marginBottom: 10,
       paddingHorizontal: 10,
-
+      color: Color.primaryText,
       borderWidth: 1,
       borderRadius: 10,
       borderTopWidth: 0,
@@ -63,7 +63,7 @@ const styleScaled = (Color: any) => {
       fontWeight: 'bold',
       marginBottom: 10,
       letterSpacing: 1.2,
-      // color: '#171717',
+      color: Color.primaryText,
       opacity: 0.7,
       textTransform: 'capitalize',
     },
@@ -72,7 +72,7 @@ const styleScaled = (Color: any) => {
       fontWeight: '500',
       textAlign: 'center',
       letterSpacing: 2,
-      // color: '#171717',
+      color: Color.primaryText,
       opacity: 0.7,
       textTransform: 'capitalize',
 
@@ -83,6 +83,7 @@ const styleScaled = (Color: any) => {
       textAlign: 'center',
       letterSpacing: 1,
       marginVertical: 15,
+      color: Color.primaryText,
     },
     forgetPass: {
       width: '100%',
@@ -91,7 +92,7 @@ const styleScaled = (Color: any) => {
       opacity: 0.7,
     },
     signIn: {
-      backgroundColor: '#ED2939',
+      backgroundColor: Color.primary,
       width: '100%',
       height: 40,
       justifyContent: 'center',
@@ -101,7 +102,7 @@ const styleScaled = (Color: any) => {
       marginVertical: 20,
     },
     shadow5: {
-      shadowColor: '#ED2939',
+      shadowColor: Color.primary,
       shadowOffset: {
         width: 0,
         height: 5,
@@ -117,7 +118,7 @@ const styleScaled = (Color: any) => {
     borderIc: {
       borderRadius: 10,
       borderWidth: 5,
-      borderColor: 'white',
+      borderColor: '#FFFFFF',
       paddingVertical: 8,
       paddingHorizontal: 20,
       marginHorizontal: 10,

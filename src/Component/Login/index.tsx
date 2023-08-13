@@ -4,11 +4,13 @@ import auth from '@react-native-firebase/auth';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import styleScaled from './style';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from '../../Utils/Themes';
 // import { connect } from 'react-redux';
 
 
-const LoginScreen = (props) => {
-  const styles = styleScaled(props.color);
+const LoginScreen = (props: any) => {
+  const {theme} = useTheme();
+  const styles = styleScaled(theme);
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -43,31 +45,33 @@ const LoginScreen = (props) => {
   const { t } = useTranslation();
   return (
     <ImageBackground
-      source={require('../../Asset/Picture/5.jpg')}
+      source={theme.theme === 'light' ? require('../../Asset/Picture/5.jpg') : require('../../Asset/Picture/bgLoginDark.jpg')}
       style={styles.container}
       imageStyle={styles.backgroundImage}
       blurRadius={50}
     >
       <View style={{ height: 40 }}>
-        {loading && <ActivityIndicator size="large" color="#007bff" />}
+        {loading && <ActivityIndicator size="large" color={theme.primary} />}
       </View>
-      <Text style={styles.title}>{t('welcome again!')}</Text>
+      <Text style={styles.title}>{t('WELCOME_AGAIN')}</Text>
       <Text style={styles.subTitle}>{t("welcome back you've")}</Text>
-      <Text style={[styles.subTitle, { marginBottom: 22 }]}>{t('been missed!')}</Text>
+      <Text style={[styles.subTitle, { marginBottom: 22 }]}>{t('BEEN_MISSED')}</Text>
 
       <TextInput
         style={styles.input}
-        placeholder= {t('email')}
+        placeholder= {t('EMAIL')}
         value={email}
         onChangeText={setEmail}
+        placeholderTextColor={theme.primaryText2}
       />
       <View style={styles.passwordContainer}>
         <TextInput
           style={styles.input}
-          placeholder={t('password')}
+          placeholder={t('PASS')}
           secureTextEntry={!showPassword}
           value={password}
           onChangeText={setPassword}
+          placeholderTextColor={theme.primaryText2}
         />
         <TouchableOpacity
           onPress={() => setShowPassword(!showPassword)}
@@ -75,23 +79,23 @@ const LoginScreen = (props) => {
           <Icon
             name={showPassword ? 'eye' : 'eye-slash'}
             size={20}
-            color={'grey'} />
+            color={theme.primaryText2} />
         </TouchableOpacity>
       </View>
 
       <TouchableOpacity style={styles.forgetPass} onPress={() => { }}>
-        <Text style={{ color: 'black', fontSize: 15, fontWeight: '500' }}>{t('forget password')}</Text>
+        <Text style={{ color: theme.primaryText, fontSize: 15, fontWeight: '500' }}>{t('FORGET_PASS')}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity style={[styles.signIn, styles.shadow5]} onPress={() => {
         setLoading(true);
         handleSignIn();
       }}>
-        <Text style={{ color: 'white', fontSize: 20, fontWeight: '600', textTransform: 'capitalize' }}>{t('sign in')}</Text>
+        <Text style={{ color: theme.onBackground, fontSize: 20, fontWeight: '600', textTransform: 'capitalize' }}>{t('SIGN_IN')}</Text>
       </TouchableOpacity>
 
       {/*Start Social Connect Account */}
-      <Text style={styles.continue}>{t('or continues with')}</Text>
+      <Text style={styles.continue}>{t('OR_CONTINUE_WITH')}</Text>
       <View style={styles.flexRow}>
         <TouchableOpacity style={styles.borderIc}>
           <Image
@@ -124,9 +128,9 @@ const LoginScreen = (props) => {
 
       {/* Start Register   */}
       <View style={styles.flexRow}>
-        <Text style={styles.continue}>{t('not a menber?')}</Text>
+        <Text style={styles.continue}>{t('NOT_MEMBER')}</Text>
         <TouchableOpacity onPress={() => navigation.navigate('register')}>
-          <Text style={{ color: 'blue', marginLeft: 5, letterSpacing: 1 }}>{t('register Now')}</Text>
+          <Text style={{ color: theme.link, marginLeft: 5, letterSpacing: 1 }}>{t('REGISTER_NOW')}</Text>
         </TouchableOpacity>
       </View>
       {/* End Register */}

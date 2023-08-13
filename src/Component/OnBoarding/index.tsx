@@ -6,9 +6,11 @@ import Icon from 'react-native-vector-icons/AntDesign';
 import IconIon from 'react-native-vector-icons/Ionicons';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from '../../Utils/Themes';
 
 const OnBoard = (props: any) => {
-  const styles = styleScaled(props.color);
+  const {theme} = useTheme();
+  const styles = styleScaled(theme);
   const navigation = props.navigation;
   const windowWidth = Dimensions.get('window').width;
   const data = [
@@ -16,19 +18,19 @@ const OnBoard = (props: any) => {
       id: 1,
       title: 'Guide Title 1',
       subTitle: 'sub title 1, please write content over here to display',
-      urlLinked: require('../../Asset/Picture/Gif/5.gif'),
+      urlLinked: require('../../Asset/Picture/happy.png'),
     },
     {
       id: 2,
       title: 'Guide Title 2',
       subTitle: 'sub title 2, please write content over here to display',
-      urlLinked: require('../../Asset/Picture/Gif/2.gif'),
+      urlLinked: require('../../Asset/Picture/happy.png'),
     },
     {
       id: 3,
       title: 'Guide Title 3',
       subTitle: 'sub title 3, please write content over here to display',
-      urlLinked: require('../../Asset/Picture/Gif/3.gif'),
+      urlLinked: require('../../Asset/Picture/happy.png'),
     },
   ];
   const flatListRef = useRef<FlatList<any>>(null);
@@ -88,7 +90,7 @@ const OnBoard = (props: any) => {
     const itemUse = item.item.item;
     return (
       <View style={styles.containerItem}>
-        {itemUse.urlLinked && itemUse.urlLinked !== '' && <Image source={itemUse.urlLinked} style={styles.image} />}
+        {itemUse.urlLinked && itemUse.urlLinked !== '' && <Image source={itemUse.urlLinked} style={styles.image} resizeMode='cover'/>}
         <View style={{ flex: 0.3, alignItems: 'center', justifyContent: 'center' }}>
           {itemUse.title && itemUse.title !== '' && <Text style={styles.title}>{t(itemUse.title)}</Text>}
           {itemUse.subTitle && itemUse.subTitle !== '' && <Text style={styles.subTitle}>{t(itemUse.subTitle)}</Text>}
@@ -131,7 +133,7 @@ const OnBoard = (props: any) => {
       <Animated.View
         style={
           [styles.scrollBox, boxStyle,
-          { backgroundColor: currentIndex === indexNow ? 'black' : 'gray' }]
+          { backgroundColor: currentIndex === indexNow ? theme.primaryText : theme.primaryText3 }]
         } />
     );
   };
@@ -174,14 +176,14 @@ const OnBoard = (props: any) => {
   const { t } = useTranslation();
 
   return (
-    <SafeAreaView style={{ display: 'flex', flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+    <SafeAreaView style={styles.container}>
       <View style={{ flex: 1, width: '100%' }}>
         {/* {
           currentIndex < data.length - 1 && */}
         <Animated.View style={[styles.skip,SkipStyle]}>
           <TouchableOpacity onPress={() => skip()} style={{flexDirection: 'row', width: 80}}>
-            <Text style={{ fontSize: 16, fontWeight: '600', letterSpacing: 0.6 }}>{t('Skip')}</Text>
-            <IconIon name={'play-skip-forward-sharp'} size={22} color={'black'} />
+            <Text style={{ fontSize: 16, fontWeight: '600', letterSpacing: 0.6, color: theme.primaryText }}>{t('SKIP')}</Text>
+            <IconIon name={'play-skip-forward-sharp'} size={22} color={theme.primaryText} />
           </TouchableOpacity>
         </Animated.View>
 
@@ -202,7 +204,7 @@ const OnBoard = (props: any) => {
         />
         <View style={[styles.navigator, { flex: 0.1 }]}>
           <TouchableOpacity activeOpacity={0.8} onPress={() => goToPrevItem()} style={styles.circleBtn}>
-            <Icon name={'left'} size={30} color={'white'} />
+            <Icon name={'left'} size={30} color={'#FFFFFF'} />
           </TouchableOpacity>
 
           <View style={{ flexDirection: 'row', justifyContent: 'space-around', alignItems: 'center' }}>
@@ -213,9 +215,9 @@ const OnBoard = (props: any) => {
           <TouchableOpacity activeOpacity={0.8} onPress={() => goToNextItem()} >
             <Animated.View style={[styles.circleBtn, continueBtnStyle]}>
               <Animated.View style={TextStyle}>
-                <Text style={[styles.textWhite, { width: 80 }]}>{t('Continues')}</Text>
+                <Text style={[styles.textWhite, { width: 80 }]}>{t('CONTINUES')}</Text>
               </Animated.View>
-              <Icon name={'right'} size={30} color={'white'} />
+              <Icon name={'right'} size={30} color={'#FFFFFF'} />
             </Animated.View>
           </TouchableOpacity>
         </View>

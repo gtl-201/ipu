@@ -9,6 +9,7 @@ const lightTheme = {
   primaryText3: '#818188',
   success: '#7FFF63',
   warning: '#F8AC1E',
-  error: '',
+  error: '#ED2939',
+  link: '#2C66FA',
 };
 export default lightTheme;

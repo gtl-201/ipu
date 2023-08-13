@@ -18,15 +18,25 @@ const Home: FC<any> = (props) => {
       // console.log('event: ', event);
       console.log('gusture: ', guesture);
     },
-  }
-
-  )).current;
-  console.log('u la troi', auth().currentUser?.displayName);
+  })).current;
 
   const { t } = useTranslation();
+  const user = auth().currentUser;
+  const UpdateUser = () =>{
+    user?.updateProfile({
+      displayName: 'Tên Hiển Thị Mới',
+      photoURL: 'https://example.com/profile.jpg',
+    })
+      .then(() => {
+        console.log('Cập nhật thông tin hồ sơ người dùng thành công');
+      })
+      .catch(error => {
+        console.error('Lỗi khi cập nhật thông tin hồ sơ người dùng:', error);
+      });
+  }
 
   return (
-    <View style={{ flex: 1 }} {...panResponder.panHandlers}>
+    <View style={{ flex: 1, backgroundColor: theme.background }} {...panResponder.panHandlers}>
       <TouchableOpacity
         onPress={() => {
           // navigation.navigate('Login');
@@ -39,15 +49,17 @@ const Home: FC<any> = (props) => {
           // console.log('Tên của Firebase:', firebase.app());
         }}
         style={styles.button}>
-          <Text>Sign out</Text>
-          </TouchableOpacity>
+        <Text>Sign out</Text>
+      </TouchableOpacity>
 
-      <Button title="Verify Email" onPress={() => auth().currentUser?.sendEmailVerification()
+      <Button title={t("VERIFY_EMAIL")} onPress={() => auth().currentUser?.sendEmailVerification()
         .then((data) => console.log(data))
         .catch((err: any) => console.log(err))} />
-      <Text>{t('hello')} {auth().currentUser?.displayName}</Text>
+      <Text>{t('HELLO')} {auth().currentUser?.displayName}</Text>
 
-      <Button title="check user" onPress={() => console.log('currentUser:', auth().currentUser)} />
+      <Button title={t("CHECK_USER")} onPress={() => console.log('currentUser:', auth().currentUser)} />
+
+      <Button title={t("UPDATE_USER")} onPress={() => UpdateUser()} />
 
       <ThemeSwitchScreen />
     </View >

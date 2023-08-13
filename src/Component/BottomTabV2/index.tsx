@@ -3,6 +3,7 @@ import { Animated, Dimensions, Text, TouchableOpacity, View } from 'react-native
 import styleScaled from './style';
 import Icon from 'react-native-vector-icons/Ionicons';
 import IconAnt from 'react-native-vector-icons/AntDesign';
+import { useTheme } from '../../Utils/Themes';
 
 
 // interface Props {
@@ -12,12 +13,12 @@ import IconAnt from 'react-native-vector-icons/AntDesign';
 // }
 
 const EachButton = (props: any) => {
-  const { index, item, allTab, toggleBottomTab, press, color, tabAvtive, setTabAvtive } = props;
-
+  const { index, item, allTab, toggleBottomTab, press, tabAvtive, setTabAvtive } = props;
+  const {theme} = useTheme();
+  const styles = styleScaled(theme);
   const windowWidth = Dimensions.get('window').width * 0.95;
   const widthTab: number = (windowWidth / allTab.length) - (((allTab.length / 2) * 10) - 10);
   const widthTabActive: number = (windowWidth / allTab.length) + (((allTab.length / 2) * 10) + 10);
-  const styles = styleScaled(color);
 
   const animatedValueText = useRef(
     new Animated.Value(0)
@@ -71,9 +72,9 @@ const EachButton = (props: any) => {
         style={[{ width: index === tabAvtive ? widthTabActive : widthTab }, styles.EachButton]}>
         {/* animatedWidthValue */}
         <Animated.View style={[index === tabAvtive ? styles.ActiveIcon : styles.EachButton]}>
-          <Icon name={index === tabAvtive ? item.icon.fill : item.icon.outline} size={30} color={index === tabAvtive ? '#343434' : '#979797'} />
+          <Icon name={index === tabAvtive ? item.icon.fill : item.icon.outline} size={30} color={index === tabAvtive ? '#FFFFFF' : theme.onBackground2} />
 
-          <Animated.Text style={[{color: '#343434', fontWeight: 'bold', flexWrap: 'nowrap'}, textStyle]}>{item.name}</Animated.Text>
+          <Animated.Text style={[{color: '#FFFFFF', fontWeight: 'bold', flexWrap: 'nowrap'}, textStyle]}>{item.name}</Animated.Text>
 
         </Animated.View>
       </TouchableOpacity>
@@ -81,11 +82,11 @@ const EachButton = (props: any) => {
   );
 };
 
-const BottomTabV2: FC<any> = ({ color, allTab, press }) => {
+const BottomTabV2: FC<any> = ({ allTab, press }) => {
 
   const windowWidth = Dimensions.get('window').width * 0.95;
-
-  const styles = styleScaled(color);
+  const {theme} = useTheme();
+  const styles = styleScaled(theme);
 
   // Animation BottomTab Start
   const [bottomTabOpen, setBottomTabOpen] = useState(false);
@@ -148,12 +149,12 @@ const BottomTabV2: FC<any> = ({ color, allTab, press }) => {
             toggleBottomTab();
           }}
         >
-          <IconAnt name={'menu-unfold'} size={30} color={'#979797'} />
+          <IconAnt name={'menu-unfold'} size={30} color={'white'} />
         </TouchableOpacity>
       </Animated.View>
       <Animated.View style={[styles.FlexHorizon, styles.BottomTabContainer, { width: animatedWidthValue, marginLeft: animatedPositionValue }]}>
         {allTab.map((item: any, index: any) => (
-          <EachButton key={index} index={index} item={item} allTab={allTab} toggleBottomTab={() => toggleBottomTab()} press={press} color={color} tabAvtive={tabAvtive} setTabAvtive={setTabAvtive} />
+          <EachButton key={index} index={index} item={item} allTab={allTab} toggleBottomTab={() => toggleBottomTab()} press={press} tabAvtive={tabAvtive} setTabAvtive={setTabAvtive} />
         )
         )}
       </Animated.View>

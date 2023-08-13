@@ -4,7 +4,7 @@ import vi from '../Languages/vi';
 
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import { Button, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 // import firebase from '@react-native-firebase/app';
 
 i18next.use(initReactI18next).init({

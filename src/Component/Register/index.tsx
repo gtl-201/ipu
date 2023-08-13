@@ -4,11 +4,11 @@ import auth from '@react-native-firebase/auth';
 import { SHADOW_1, SHADOW_3 } from '../../Utils/Values';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import { useTranslation } from 'react-i18next';
+import { useTheme } from '../../Utils/Themes';
+import styleScaled from './style';
 
 const RegisterScreen = (props: any) => {
   const navigation = props.navigation;
-
-  const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
@@ -25,30 +25,34 @@ const RegisterScreen = (props: any) => {
           console.log('User account created & signed in!');
         })
         .catch(error => {
+          setLoading(false);
           if (error.code === 'auth/email-already-in-use') {
-            Alert.alert('Register Failed', 'That email address is wrong or already in use!');
+            Alert.alert('Register Failed', t('WRONG_OR_USED'));
           }
           else if (error.code === 'auth/invalid-email') {
-            Alert.alert('Register Failed', 'That email address is invalid!');
+            Alert.alert('Register Failed', t('INVILED_EMAIL_PASS'));
           }
           else {
             // console.error(error.code);
-            Alert.alert('Register Failed', error.code);
+            Alert.alert('Register Failed', t('REGIS_FAILED_CHECK_AND_TRY'));
           }
-          Alert.alert('Register Failed', error.code);
+          console.log('failed',error.code);
 
         });
     } else {
-      Alert.alert('Register Failed', 'Password you`ve type not must be same');
+      setLoading(false);
+      Alert.alert('Register Failed', t('PASS_MUST_SAME'));
     }
 
   };
 
   const { t } = useTranslation();
+  const {theme} = useTheme();
+  const styles = styleScaled(theme);
 
   return (
     <ImageBackground
-      source={require('../../Asset/Picture/5.jpg')}
+    source={theme.theme === 'light' ? require('../../Asset/Picture/5.jpg') : require('../../Asset/Picture/bgLoginDark.jpg')}
       style={styles.container}
       imageStyle={styles.backgroundImage}
       blurRadius={50}
@@ -59,12 +63,10 @@ const RegisterScreen = (props: any) => {
       </View>
 
       <Text style={styles.title}>
-        {t('welcome to')}
-        <Text style={[styles.title, { color: '#ED2939' }]}>Ipu</Text>
+        {t('WELCOME_TO')}
+        <Text style={[styles.title, { color: theme.error }]}> Ipu </Text>
         {t('app')}
       </Text>
-      {/* <Text style={styles.subTitle}>Welcome back you've</Text> */}
-      {/* <Text style={[styles.subTitle, { marginBottom: 22 }]}>been missed!</Text> */}
 
 
       <TextInput
@@ -72,6 +74,7 @@ const RegisterScreen = (props: any) => {
         placeholder={t("email")}
         value={email}
         onChangeText={setEmail}
+        placeholderTextColor={theme.primaryText2}
       />
       <View style={styles.passwordContainer}>
         <TextInput
@@ -80,6 +83,7 @@ const RegisterScreen = (props: any) => {
           secureTextEntry={!showPassword}
           value={password}
           onChangeText={setPassword}
+          placeholderTextColor={theme.primaryText2}
         />
         <TouchableOpacity
           onPress={() => setShowPassword(!showPassword)}
@@ -87,7 +91,7 @@ const RegisterScreen = (props: any) => {
           <Icon
             name={showPassword ? 'eye' : 'eye-slash'}
             size={20}
-            color={'grey'} />
+            color={theme.primaryText3} />
         </TouchableOpacity>
       </View>
 
@@ -98,6 +102,7 @@ const RegisterScreen = (props: any) => {
           secureTextEntry={!showConfirmPassword}
           value={confirmPassword}
           onChangeText={setConfirmPassword}
+          placeholderTextColor={theme.primaryText2}
         />
         <TouchableOpacity
           onPress={() => setShowConfirmPassword(!showConfirmPassword)}
@@ -105,7 +110,7 @@ const RegisterScreen = (props: any) => {
           <Icon
             name={showConfirmPassword ? 'eye' : 'eye-slash'}
             size={20}
-            color={'grey'} />
+            color={theme.primaryText3} />
         </TouchableOpacity>
       </View>
 
@@ -113,110 +118,17 @@ const RegisterScreen = (props: any) => {
         setLoading(true);
         handleRegister();
       }}>
-        <Text style={{ color: 'white', fontSize: 20, fontWeight: '600', textTransform: 'capitalize' }}>{t('sign up')}</Text>
+        <Text style={{ color: 'white', fontSize: 20, fontWeight: '600', textTransform: 'capitalize' }}>{t('SIGN_UP')}</Text>
       </TouchableOpacity>
       {/* <Button title="Đăng ký" onPress={handleRegister} /> */}
       <View style={styles.flexRow}>
-        <Text style={styles.continue}>{t('You already have an Account?')}</Text>
+        <Text style={styles.continue}>{t('YOU_HAVE_ACCOUNT')}</Text>
         <TouchableOpacity onPress={() => navigation.goBack()}>
-          <Text style={{ color: 'blue', marginLeft: 5, letterSpacing: 1 }}>{t('Login Now')}</Text>
+          <Text style={{ color: theme.link, marginLeft: 5, letterSpacing: 1 }}>{t('LOGIN_NOW')}</Text>
         </TouchableOpacity>
       </View>
     </ImageBackground>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 20,
-    opacity: 0.9,
-  },
-  title: {
-    fontSize: 30,
-    fontWeight: 'bold',
-    marginBottom: 30,
-    letterSpacing: 1.2,
-    // color: '#333333',
-    opacity: 0.9,
-  },
-  subTitle: {
-    fontSize: 20,
-    fontWeight: '500',
-    textAlign: 'center',
-    letterSpacing: 2,
-    // color: '#333333',
-    opacity: 0.9,
-
-  },
-  signUp: {
-    backgroundColor: '#ED2939',
-    width: '100%',
-    height: 50,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius: 10,
-    // ...SHADOW_5,
-    marginVertical: 40,
-  },
-  backgroundImage: {
-    flex: 1,
-    resizeMode: 'cover',
-  },
-  input: {
-    height: 45,
-    fontSize: 16,
-    marginVertical: 10,
-    width: '100%',
-    borderColor: 'gray',
-    backgroundColor: 'white',
-    marginBottom: 10,
-    paddingHorizontal: 10,
-
-    borderWidth: 1,
-    borderRadius: 10,
-    borderTopWidth: 0,
-    borderEndWidth: 0,
-    borderLeftWidth: 0,
-    borderBottomWidth: 0,
-    ...SHADOW_3,
-  },
-  shadow5: {
-    shadowColor: "#ED2939",
-    shadowOffset: {
-      width: 0,
-      height: 5,
-    },
-    shadowOpacity: 0.36,
-    shadowRadius: 6.68,
-    elevation: 11,
-  },
-  passwordContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  showPass: {
-    position: 'absolute',
-    right: 15,
-    top: 23,
-  },
-  flexRow: {
-    // flex: 1,
-    width: '100%',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginVertical: 25,
-  },
-  continue: {
-    fontSize: 15,
-    fontWeight: '500',
-    textAlign: 'center',
-    letterSpacing: 1,
-    marginVertical: 15,
-  },
-});
 
 export default RegisterScreen;

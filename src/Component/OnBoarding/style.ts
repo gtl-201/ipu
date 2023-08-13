@@ -5,6 +5,13 @@ import {ScaledSheet} from 'react-native-size-matters';
 const styleScaled = (Color: any) => {
   const windowWidth = Dimensions.get('window').width;
   return ScaledSheet.create({
+    container: {
+      display: 'flex',
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      backgroundColor: Color.background,
+    },
     containerItem: {
       flex: 1,
       width: windowWidth,
@@ -27,7 +34,7 @@ const styleScaled = (Color: any) => {
       letterSpacing: 1,
       width: windowWidth * (90 / 100),
       textAlign: 'center',
-      color: '',
+      color: Color.primaryText,
     },
     subTitle: {
       // fontWeight: '800',
@@ -35,13 +42,13 @@ const styleScaled = (Color: any) => {
       letterSpacing: 0.7,
       // paddingHorizontal: 20,
       width: windowWidth * (70 / 100),
-      color: '',
+      color: Color.primaryText,
       textAlign: 'center',
     },
     circleBtn: {
       width: 50,
       height: 50,
-      backgroundColor: 'black',
+      backgroundColor: Color.primary,
       borderRadius: 15,
       justifyContent: 'center',
       alignItems: 'center',
@@ -63,7 +70,7 @@ const styleScaled = (Color: any) => {
       marginHorizontal: 5,
     },
     textWhite: {
-      color: 'white',
+      color: '#FFFFFF',
       fontSize: 15,
       fontWeight: '400',
       letterSpacing: 0.8,

@@ -10,7 +10,7 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const [isDarkMode, setIsDarkMode] = useState(true); // Hoặc bạn có thể lấy giá trị này từ AsyncStorage hoặc bất kỳ nguồn dữ liệu nào khác
+  const [isDarkMode, setIsDarkMode] = useState(false); // Hoặc bạn có thể lấy giá trị này từ AsyncStorage hoặc bất kỳ nguồn dữ liệu nào khác
 
   const toggleTheme = () => {
     setIsDarkMode(prevMode => !prevMode);
