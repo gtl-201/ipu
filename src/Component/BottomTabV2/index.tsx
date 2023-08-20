@@ -14,7 +14,7 @@ import { useTheme } from '../../Utils/Themes';
 
 const EachButton = (props: any) => {
   const { index, item, allTab, toggleBottomTab, press, tabAvtive, setTabAvtive } = props;
-  const {theme} = useTheme();
+  const { theme } = useTheme();
   const styles = styleScaled(theme);
   const windowWidth = Dimensions.get('window').width * 0.95;
   const widthTab: number = (windowWidth / allTab.length) - (((allTab.length / 2) * 10) - 10);
@@ -26,11 +26,11 @@ const EachButton = (props: any) => {
 
 
   useEffect(() => {
-      Animated.timing(animatedValueText, {
-        toValue: tabAvtive === index ? 1 : 0,
-        duration: 300,
-        useNativeDriver: false,
-      }).start();
+    Animated.timing(animatedValueText, {
+      toValue: tabAvtive === index ? 1 : 0,
+      duration: 300,
+      useNativeDriver: false,
+    }).start();
   }, [tabAvtive]);
 
   const textStyle = {
@@ -51,6 +51,17 @@ const EachButton = (props: any) => {
       outputRange: [0, 44],
     }),
   };
+  const IconStyle = {
+    transform: [
+      {
+        rotate: animatedValueText.interpolate({
+          inputRange: [0, 1],
+          outputRange: ['0deg', '360deg'],
+        }),
+      },
+    ],
+  };
+
 
 
   return (
@@ -70,11 +81,11 @@ const EachButton = (props: any) => {
           }
         }}
         style={[{ width: index === tabAvtive ? widthTabActive : widthTab }, styles.EachButton]}>
-        {/* animatedWidthValue */}
         <Animated.View style={[index === tabAvtive ? styles.ActiveIcon : styles.EachButton]}>
-          <Icon name={index === tabAvtive ? item.icon.fill : item.icon.outline} size={30} color={index === tabAvtive ? '#FFFFFF' : theme.onBackground2} />
-
-          <Animated.Text style={[{color: '#FFFFFF', fontWeight: 'bold', flexWrap: 'nowrap'}, textStyle]}>{item.name}</Animated.Text>
+          <Animated.View style={IconStyle}>
+            <Icon name={index === tabAvtive ? item.icon.fill : item.icon.outline} size={30} color={index === tabAvtive ? '#FFFFFF' : theme.onBackground2} />
+          </Animated.View>
+          <Animated.Text style={[{ color: '#FFFFFF', fontWeight: 'bold', flexWrap: 'nowrap', fontSize: 15 }, textStyle]}>{item.name}</Animated.Text>
 
         </Animated.View>
       </TouchableOpacity>
@@ -85,30 +96,19 @@ const EachButton = (props: any) => {
 const BottomTabV2: FC<any> = ({ allTab, press }) => {
 
   const windowWidth = Dimensions.get('window').width * 0.95;
-  const {theme} = useTheme();
+  const { theme } = useTheme();
   const styles = styleScaled(theme);
 
   // Animation BottomTab Start
   const [bottomTabOpen, setBottomTabOpen] = useState(false);
-  const animatedWidthValue = useRef(
-    new Animated.Value(0)
-  ).current;
-  const animatedPositionValue = useRef(
-    new Animated.Value(windowWidth + 100)
-  ).current;
-  const animationBurgerValue = useRef(
-    new Animated.Value(0)
-  ).current;
+
+  const animatedBarValue = useRef(new Animated.Value(0)).current;
+  const animationBurgerValue = useRef(new Animated.Value(0)).current;
 
   const toggleBottomTab = () => {
     if (bottomTabOpen) {
-      Animated.timing(animatedWidthValue, {
+      Animated.timing(animatedBarValue, {
         toValue: 0,
-        duration: 600,
-        useNativeDriver: false,
-      }).start();
-      Animated.timing(animatedPositionValue, {
-        toValue: windowWidth + 400,
         duration: 600,
         useNativeDriver: false,
       }).start();
@@ -119,18 +119,13 @@ const BottomTabV2: FC<any> = ({ allTab, press }) => {
       }).start();
       setBottomTabOpen(false);
     } else {
-      Animated.timing(animatedWidthValue, {
-        toValue: windowWidth,
-        duration: 600,
-        useNativeDriver: false,
-      }).start();
-      Animated.timing(animatedPositionValue, {
-        toValue: 0,
+      Animated.timing(animatedBarValue, {
+        toValue: 1,
         duration: 600,
         useNativeDriver: false,
       }).start();
       Animated.timing(animationBurgerValue, {
-        toValue: -120,
+        toValue: 1,
         duration: 600,
         useNativeDriver: false,
       }).start();
@@ -138,11 +133,36 @@ const BottomTabV2: FC<any> = ({ allTab, press }) => {
     }
   };
 
+  const animationBurger = {
+    right: animationBurgerValue.interpolate({
+      inputRange: [0, 1],
+      outputRange: [0, -120],
+    }),
+  };
+  const animationBar2 = {
+    transform: [
+      {
+        translateX: animatedBarValue.interpolate({
+          inputRange: [0, 1],
+          outputRange: [(windowWidth * 2) + 100, (windowWidth * 0.98) + (windowWidth * 0.05)],
+          // extrapolate: 'clamp',
+        }),
+      },
+      // {
+      //   scale: animatedBarValue.interpolate({
+      //     inputRange: [0, 1],
+      //     outputRange: [0, 1],
+      //   }),
+      // },
+    ],
+
+  };
+
   const [tabAvtive, setTabAvtive] = useState(0);
   // Animation BottomTab End
   return (
-    <View style={{ marginTop: -100 }}>
-      <Animated.View style={[styles.BurgerContainer, { marginRight: animationBurgerValue }]}>
+    <View style={{ position: 'absolute', bottom: 12, right: 0 }}>
+      <Animated.View style={[styles.BurgerContainer, animationBurger]}>
         <TouchableOpacity
           style={{ width: 60, height: 60, justifyContent: 'center', alignItems: 'center' }}
           onPress={() => {
@@ -152,7 +172,7 @@ const BottomTabV2: FC<any> = ({ allTab, press }) => {
           <IconAnt name={'menu-unfold'} size={30} color={'white'} />
         </TouchableOpacity>
       </Animated.View>
-      <Animated.View style={[styles.FlexHorizon, styles.BottomTabContainer, { width: animatedWidthValue, marginLeft: animatedPositionValue }]}>
+      <Animated.View style={[styles.FlexHorizon, styles.BottomTabContainer, animationBar2]}>
         {allTab.map((item: any, index: any) => (
           <EachButton key={index} index={index} item={item} allTab={allTab} toggleBottomTab={() => toggleBottomTab()} press={press} tabAvtive={tabAvtive} setTabAvtive={setTabAvtive} />
         )

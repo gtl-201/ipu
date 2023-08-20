@@ -22,4 +22,9 @@ export default {
   VERIFY_EMAIL: 'Verify email',
   CHECK_USER: 'Check user',
   TOGGLE_THEME: 'Toggle theme',
+  THANK_FOR_REGIST_VERIFY_EMAIL: 'Thanks for registering for an account on Ipu App! Before we get started, we just need to confirm that this is you. Click below to verify your email address.',
+  WELCOME_TO_IPU_APP: 'Welcome to Ipu App',
+  CHECK_MAIL: 'Check your Email adress: ',
+  CLICK_LINK_TO_VERIFY: 'and click the link we sent to complete verify',
+  RESEND_EMAIL: 'Resend email',
 };

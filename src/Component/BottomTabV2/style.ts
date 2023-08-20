@@ -21,6 +21,7 @@ const styleScaled = (Color: any) => {
       marginTop: 0,
       borderTopLeftRadius: 30,
       borderBottomLeftRadius: 30,
+      ...SHADOW_3,
     },
     // CircleBlack:{
     //   // backgroundColor: '',
@@ -40,9 +41,12 @@ const styleScaled = (Color: any) => {
       alignItems: 'center',
       alignSelf: 'center',
       backgroundColor: Color.onBackground,
-      marginTop: -70,
+      // marginTop: -70,
       // width: scWidth * 0.95,
       ...SHADOW_3,
+      position: 'absolute',
+      right: scWidth,
+      maxWidth: scWidth * 0.98,
     },
     EachButton: {
       display: 'flex',

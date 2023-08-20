@@ -22,6 +22,7 @@ function App(): JSX.Element {
       {
         signIn !== false ? (
           <AppContentWithLogin />
+          // <Verify />
         ) : (
           <AppContentWithoutLogin />
         )}

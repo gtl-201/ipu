@@ -23,4 +23,9 @@ export default {
   VERIFY_EMAIL: 'Xác thực email',
   CHECK_USER: 'Kiểm tra user',
   TOGGLE_THEME: 'Thay đổi giao diện',
+  THANK_FOR_REGIST_VERIFY_EMAIL: 'Cảm ơn bạn đã đăng ký tài khoản trên Discord! Trước khi bắt đầu, chúng tôi chỉ cần xác nhận rằng đây là bạn. Nhấp vào bên dưới để xác minh địa chỉ email của bạn.',
+  WELCOME_TO_IPU_APP: 'Chào mừng tới Ipu',
+  CHECK_MAIL: 'Kiểm tra địa chỉ Email của bạn: ',
+  CLICK_LINK_TO_VERIFY: 'và nhấp vào liên kết chúng tôi đã gửi để hoàn tất xác minh',
+  RESEND_EMAIL: 'Gửi lại email',
 };

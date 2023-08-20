@@ -21,7 +21,6 @@ function NavigateScreen() {
                 <Stack.Screen name="test" component={Test} options={{headerShown: false}}/>
                 {/* <Stack.Screen name="bottomTabNavigation" component={BottomTabNavigation} /> */}
                 <Stack.Screen name="Login" component={LoginScreen} />
-            
             </Stack.Navigator>
         </NavigationContainer>
     );

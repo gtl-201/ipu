@@ -53,6 +53,10 @@ const styles = StyleSheet.create({
         borderRadius: 40,
         justifyContent: 'center',
         alignItems: 'center',
+        position: 'absolute',
+        top: 59,
+        right: 10,
+        zIndex: 1,
     },
     button: {
         width: 100,
