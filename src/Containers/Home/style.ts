@@ -11,6 +11,20 @@ const styleScaled = (Color: any) => {
       height: 40,
       backgroundColor: Color.primary,
     },
+    boxContainer:{
+      paddingHorizontal: 10,
+      paddingVertical: 15,
+      borderBottomRightRadius: 20,
+      borderBottomLeftRadius: 20,
+      backgroundColor: Color.onBackground,
+    },
+    boxContainer2:{
+      paddingHorizontal: 10,
+      paddingVertical: 15,
+      borderRadius: 20,
+      backgroundColor: Color.onBackground,
+      marginTop: 10,
+    },
   });
 };
 export default styleScaled;

@@ -1,21 +1,20 @@
-import React, { FC, memo, useState } from 'react';
+import React, { FC, memo, useEffect, useState } from 'react';
 
 import { StatusBar, StyleSheet, SafeAreaView, View } from 'react-native';
 import { useTheme } from '../Themes/index';
 import NavigateScreen from '../../Navigation';
 import NavigateScreenTest from '../../Navigation/index-test';
-import BottomTabV2 from '../../Component/BottomTabV2/index';
+import BottomTabV2 from '../../Component/WithLogin/BottomTabV2/index';
 import I18nHelper from './i18n';
-import Verify from '../../Component/Verify';
+import Verify from '../../Component/FirstSet/Verify';
 import auth from '@react-native-firebase/auth';
+import FirstSetInfoScreen from '../../Component/FirstSet/FirstSetInfo';
 
 
 const AppContentWithLogin: FC<any> = (props) => {
     // const {choose} = props;
     const { theme } = useTheme();
     const user = auth().currentUser;
-    console.log(user?.emailVerified);
-    console.log(user?.emailVerified === true, '???');
 
     //START TAB
     const tabs: any = {
@@ -31,29 +30,26 @@ const AppContentWithLogin: FC<any> = (props) => {
     };
     //END TAB
 
-return (
-    <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
-        <StatusBar
-            translucent
-            barStyle={theme.theme === 'dark' ? 'light-content' : 'dark-content'}
-            backgroundColor={theme.background}
-        />
-        {user?.emailVerified === false
-            ? <Verify />
-            : <View style={{ flex: 1 }}>
+    return (
+        <SafeAreaView style={[styles.container, { backgroundColor: theme.background }]}>
+            <StatusBar
+                translucent
+                barStyle={theme.theme === 'dark' ? 'light-content' : 'dark-content'}
+                backgroundColor={theme.background}
+            />
+            <View style={{ flex: 1 }}>
                 <I18nHelper />
                 {choose === 'home' && <NavigateScreen />}
                 {choose === 'test' && <NavigateScreenTest />}
-
                 <BottomTabV2 allTab={Object.keys(tabs).map(name => ({ name, ...tabs[name] }))}
                     press={(item: string) => changeTab(item)}
                 />
-            </View>}
-        {/* */}
+            </View>
+            {/* */}
 
-    </SafeAreaView>
-)
-    ;
+        </SafeAreaView>
+    )
+        ;
 };
 const styles = StyleSheet.create({
     container: {

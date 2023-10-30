@@ -6,7 +6,7 @@ const darkTheme = {
   primary: '#3790FF',
   primaryText: '#FEFEFE',
   primaryText2: '#ACACAC',
-  primaryText3: '#4E4E4E',
+  primaryText3: '#6D6F76',
   success: '#7FFF63',
   warning: '#F8AC1E',
   error: '#ED2939',

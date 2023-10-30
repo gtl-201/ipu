@@ -1,10 +1,11 @@
 import React, { FC, memo, useState } from 'react';
 import en from '../Languages/en';
 import vi from '../Languages/vi';
-
+import 'intl-pluralrules';
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import TextBox from '../../Component/TextBox';
 // import firebase from '@react-native-firebase/app';
 
 i18next.use(initReactI18next).init({
@@ -33,11 +34,11 @@ const I18nHelper: FC<any> = (props: any) => {
             <TouchableOpacity style={styles.button} onPress={() => changeLanguage(currentLanguage === 'vi' ? 'en' : 'vi')}>
                 <View style={styles.circle}>
                     <Image
-                        source={currentLanguage === 'vi' ? require('../../Asset/Picture/Flag/VN.png') : require('../../Asset/Picture/Flag/EN.png')}
+                        source={currentLanguage === 'vi' ? require('../../../Asset/Picture/Flag/VN.png') : require('../../../Asset/Picture/Flag/EN.png')}
                         style={styles.flag}
                     />
                 </View>
-                <Text>{currentLanguage === 'vi' ? 'VI' : 'EN'}</Text>
+                <TextBox>{currentLanguage === 'vi' ? 'VI' : 'EN'}</TextBox>
             </TouchableOpacity>
         </View >
     );
