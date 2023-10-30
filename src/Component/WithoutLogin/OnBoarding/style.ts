@@ -1,5 +1,4 @@
-import {SHADOW_3} from '../../../Utils/Values/shadows';
-import {Dimensions, Platform, StatusBar} from 'react-native';
+import {Dimensions} from 'react-native';
 import {ScaledSheet} from 'react-native-size-matters';
 
 const styleScaled = (Color: any) => {
@@ -35,7 +34,6 @@ const styleScaled = (Color: any) => {
       width: windowWidth * (90 / 100),
       textAlign: 'center',
       color: Color.primaryText,
-      fontFamily: 'Nosifer-Regular',
     },
     subTitle: {
       // fontWeight: '800',

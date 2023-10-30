@@ -54,6 +54,7 @@ const OnBoardScreen = (props: any) => {
 
       }).start();
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentIndex]);
 
   const goToNextItem = () => {
@@ -91,7 +92,7 @@ const OnBoardScreen = (props: any) => {
     const itemUse = item.item.item;
     return (
       <View style={styles.containerItem}>
-        {itemUse.urlLinked && itemUse.urlLinked !== '' && <Image source={itemUse.urlLinked} style={styles.image} resizeMode='cover'/>}
+        {itemUse.urlLinked && itemUse.urlLinked !== '' && <Image source={itemUse.urlLinked} style={styles.image} resizeMode="cover"/>}
         <View style={{ flex: 0.3, alignItems: 'center', justifyContent: 'center' }}>
           {itemUse.title && itemUse.title !== '' && <TextBox style={styles.title}>{t(itemUse.title)}</TextBox>}
           {itemUse.subTitle && itemUse.subTitle !== '' && <TextBox style={styles.subTitle}>{t(itemUse.subTitle)}</TextBox>}
@@ -120,6 +121,7 @@ const OnBoardScreen = (props: any) => {
           useNativeDriver: false,
         }).start();
       }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [currentIndex]);
 
     const boxStyle = {

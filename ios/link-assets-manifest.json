@@ -1,0 +1,17 @@
+{
+  "migIndex": 1,
+  "data": [
+    {
+      "path": "asset/fonts/Agbalumo-Regular.ttf",
+      "sha1": "b0670b6c5fab78a1f8096936516c010a3134aa1b"
+    },
+    {
+      "path": "asset/fonts/Lato-BlackItalic.ttf",
+      "sha1": "b490ec02c69bb74f5b4f487c59e984891c8da71c"
+    },
+    {
+      "path": "asset/fonts/Nosifer-Regular.ttf",
+      "sha1": "07410372e6a726e13fe685b7db3fa0ece7699f72"
+    }
+  ]
+}
