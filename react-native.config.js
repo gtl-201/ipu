@@ -6,5 +6,5 @@ module.exports = {
         },
       },
     },
-    assets: ['./Asset/Fonts'],
+    assets: ['./asset/fonts'],
   };

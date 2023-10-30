@@ -34,7 +34,7 @@ const I18nHelper: FC<any> = (props: any) => {
             <TouchableOpacity style={styles.button} onPress={() => changeLanguage(currentLanguage === 'vi' ? 'en' : 'vi')}>
                 <View style={styles.circle}>
                     <Image
-                        source={currentLanguage === 'vi' ? require('../../../Asset/Picture/Flag/VN.png') : require('../../../Asset/Picture/Flag/EN.png')}
+                        source={currentLanguage === 'vi' ? require('../../../asset/picture/Flag/VN.png') : require('../../../asset/picture/Flag/EN.png')}
                         style={styles.flag}
                     />
                 </View>

@@ -43,7 +43,7 @@ const Verify = (props: any) => {
         </View>
         <View style={styles.VerifyBoxContainer}>
           <Image
-            source={require('../../../../Asset/Picture/EmailVerify.png')}
+            source={require('../../../../asset/picture/EmailVerify.png')}
             style={styles.imageStyle}
           />
           <TextBox style={styles.tittle}>{t('HELLO') + (user?.displayName ?? t('NEW_USER')) + ','}</TextBox>

@@ -17,22 +17,22 @@ const TypeProduct = (props: any) => {
     {
       id: 1,
       name: 'Gongcha',
-      urlLinked: require('../../../../Asset/Picture/Brand/gong.jpg'),
+      urlLinked: require('../../../../asset/picture/Brand/gong.jpg'),
     },
     {
       id: 2,
       name: 'Highland',
-      urlLinked: require('../../../../Asset/Picture/Brand/highland.png'),
+      urlLinked: require('../../../../asset/picture/Brand/highland.png'),
     },
     {
       id: 3,
       name: 'The Deer',
-      urlLinked: require('../../../../Asset/Picture/Brand/deer.jpg'),
+      urlLinked: require('../../../../asset/picture/Brand/deer.jpg'),
     },
     {
       id: 4,
       name: 'Degray',
-      urlLinked: require('../../../../Asset/Picture/Brand/degray.png'),
+      urlLinked: require('../../../../asset/picture/Brand/degray.png'),
     },
   ];
 

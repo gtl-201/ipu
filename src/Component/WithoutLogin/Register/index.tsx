@@ -66,7 +66,7 @@ const RegisterScreen = (props: any) => {
 
   return (
     <ImageBackground
-      source={theme.theme === 'light' ? require('../../../../Asset/Picture/5.jpg') : require('../../../../Asset/Picture/bgLoginDark.jpg')}
+      source={theme.theme === 'light' ? require('../../../../asset/picture/5.jpg') : require('../../../../asset/picture/bgLoginDark.jpg')}
       style={styles.container}
       imageStyle={styles.backgroundImage}
       blurRadius={100}

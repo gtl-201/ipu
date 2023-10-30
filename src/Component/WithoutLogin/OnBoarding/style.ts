@@ -35,6 +35,7 @@ const styleScaled = (Color: any) => {
       width: windowWidth * (90 / 100),
       textAlign: 'center',
       color: Color.primaryText,
+      fontFamily: 'Nosifer-Regular',
     },
     subTitle: {
       // fontWeight: '800',

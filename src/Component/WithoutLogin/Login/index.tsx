@@ -44,7 +44,7 @@ const LoginScreen = (props: any) => {
   const { t } = useTranslation();
   return (
     <ImageBackground
-      source={theme.theme === 'light' ? require('../../../../Asset/Picture/5.jpg') : require('../../../../Asset/Picture/bgLoginDark.jpg')}
+      source={theme.theme === 'light' ? require('../../../../asset/picture/5.jpg') : require('../../../../asset/picture/bgLoginDark.jpg')}
       style={styles.container}
       imageStyle={styles.backgroundImage}
       blurRadius={100}
@@ -111,21 +111,21 @@ const LoginScreen = (props: any) => {
       <View style={styles.flexRow}>
         <TouchableOpacity style={styles.borderIc}>
           <Image
-            source={require('../../../../Asset/Picture/gg.png')}
+            source={require('../../../../asset/picture/gg.png')}
             style={styles.image}
           />
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.borderIc}>
           <Image
-            source={require('../../../../Asset/Picture/fb.png')}
+            source={require('../../../../asset/picture/fb.png')}
             style={styles.image}
           />
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.borderIc}>
           <Image
-            source={require('../../../../Asset/Picture/phone.png')}
+            source={require('../../../../asset/picture/phone.png')}
             style={styles.image}
           />
         </TouchableOpacity>

@@ -117,7 +117,7 @@ const SetAvatarScreen = (props: any) => {
               ? { uri: image }
               : (user?.photoURL !== null)
                 ? { uri: user?.photoURL }
-                : require('../../../../../Asset/Picture/avatar-default.jpg')}
+                : require('../../../../../asset/picture/avatar-default.jpg')}
             style={styles.imageStyle} />
         </TouchableOpacity>
       </View>

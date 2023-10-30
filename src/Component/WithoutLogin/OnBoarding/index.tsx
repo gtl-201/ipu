@@ -19,19 +19,19 @@ const OnBoardScreen = (props: any) => {
       id: 1,
       title: 'Guide Title 1',
       subTitle: 'sub title 1, please write content over here to display',
-      urlLinked: require('../../../../Asset/Picture/happy.png'),
+      urlLinked: require('../../../../asset/picture/happy.png'),
     },
     {
       id: 2,
       title: 'Guide Title 2',
       subTitle: 'sub title 2, please write content over here to display',
-      urlLinked: require('../../../../Asset/Picture/happy.png'),
+      urlLinked: require('../../../../asset/picture/happy.png'),
     },
     {
       id: 3,
       title: 'Guide Title 3',
       subTitle: 'sub title 3, please write content over here to display',
-      urlLinked: require('../../../../Asset/Picture/happy.png'),
+      urlLinked: require('../../../../asset/picture/happy.png'),
     },
   ];
   const flatListRef = useRef<FlatList<any>>(null);
